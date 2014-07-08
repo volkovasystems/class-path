@@ -73,6 +73,8 @@ Path.prototype.appendToPath = function appendToPath( location ){
 	*/
 
 	this.locationList.push( location.toString( ) );
+
+	return this;
 };
 
 Path.prototype.appendToRawPath = function appendToRawPath( location ){
@@ -85,6 +87,8 @@ Path.prototype.appendToRawPath = function appendToRawPath( location ){
 	*/
 
 	this.locationList.push( location );
+
+	return this;
 };
 
 Path.prototype.joinToPath = function joinToPath( location ){
