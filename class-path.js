@@ -33,6 +33,8 @@ var Path = function Path( location ){
 	*/
 
 	this.locationList = [ location ];
+
+	return new Path( location );
 };
 
 Path.prototype.verifyIfExisting = function verifyIfExisting( ){
