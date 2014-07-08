@@ -17,8 +17,7 @@
 	@end-module-documentation
 
 	@include:
-		{
-			"work.js": "work",
+		{			
 			"fs": "fs",
 			"path": "path"
 		}
