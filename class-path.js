@@ -1,13 +1,29 @@
 /*:
-	@include:
+	@module-configuration:
 		{
-			"path": "path",
+			"packageName": "class-path",
+			"fileName": "class-path.js",
+			"moduleName": "Path",
+			"className": "Path",
+			"authorName": "Richeve S. Bebedor",
+			"authorEMail": "richeve.bebedor@gmail.com",
+			"repository": "git@github.com:volkovasystems/class-path.git",
+			"isGlobal": true
+		}
+	@end-module-configuration
+
+	@module-documentation:
+
+	@end-module-documentation
+
+	@include:
+		{			
 			"fs": "fs",
-			"work": "work"
+			"path": "path"
 		}
 	@end-include
 */
-Path = function Path( location ){
+var Path = function Path( location ){
 	/*:
 		@meta-configuration:
 			{
@@ -15,94 +31,98 @@ Path = function Path( location ){
 			}
 		@end-meta-configuration
 	*/
-	if( this instanceof Path ){
-		this.location = location;
+
+	this.locationList = [ location ];
+};
+
+Path.prototype.verifyIfExisting = function verifyIfExisting( ){
+	return fs.existsSync( this.toString( ) );
+};
+
+Path.prototype.verifyIfEmpty = function verifyIfEmpty( ){
+	if( this.checkIfDirectory( ) ){
+		return fs.readdirSync( this.toString( ) ).length > 0;
+	}else if( this.checkIfFile( ) ){
+		return fs.readFileSync( this.toString( ), { "encoding": "utf8" } ).length > 0;
 	}else{
-		return new Path( location );
+		var error = new Error( "undetermined path" );
+		console.error( error );
+		throw error;
 	}
 };
 
-Path.prototype.getLocation = function getLocation( ){
-	return this.location;
+Path.prototype.verifyIfNotEmpty = function verifyIfNotEmpty( ){
+	return !this.verifyIfEmpty( );
 };
 
-Path.prototype.verifyLocation = function verifyLocation( callback ){
+Path.prototype.checkIfDirectory = function checkIfDirectory( ){
+	return fs.statSync( this.toString( ) ).isDirectory( );
+};
+
+Path.prototype.checkIfFile = function checkIfFile( ){
+	return fs.statSync( this.toString( ) ).isFile( );
+};
+
+Path.prototype.appendToPath = function appendToPath( location ){
 	/*:
-		@method-documentation:
-
-		@end-method-documentation
-
 		@meta-configuration:
 			{
-				"callback:optional": "Callback"
+				"location:required": "Path"
 			}
 		@end-meta-configuration
 	*/
-	fs.exists( this.location,
-		function( state ){
-			self.locationVerified = state;
-			callback( state );
-		} );
+
+	this.locationList.push( location.toString( ) );
 };
 
-Path.prototype.isLocationVerified = function isLocationVerified( ){
-	return this.locationVerified;
-};
-
-Path.prototype.generateLocationInformation = function generateLocationInformation( callback ){
+Path.prototype.appendToRawPath = function appendToRawPath( location ){
 	/*:
-		@method-documentation:
-
-		@end-method-documentation
-
 		@meta-configuration:
 			{
-				"callback:optional": "Callback"
+				"location:required": "string"
 			}
 		@end-meta-configuration
 	*/
-	fs.lstat( this.location,
-		function( error, fileStatistic ){
-			if( error ){
-				console.log( error );
-				callback( error );
-			}else{
-				self.fileStatistic = fileStatistic;
-				callback( );
-			}
-		} );
+
+	this.locationList.push( location );
 };
 
-Path.prototype.getLocationInformation = function getLocationInformation( ){
-	return this.fileStatistic;
-};
-
-Path.separator = path.sep;
-
-Path.prototype.generateHierarchyList = function generateHierarchyList( callback ){
+Path.prototype.joinToPath = function joinToPath( location ){
 	/*:
-		@method-documentation:
-
-		@end-method-documentation
-
 		@meta-configuration:
 			{
-				"callback:optional": "Callback"
+				"location:required": "Path"
 			}
 		@end-meta-configuration
 	*/
-	var location = this.location;
-	var separatorPattern = new RegExp( ".+?" + path.sep + "?" );
-	var hierarchyList = [ ];
-	var match = separatorPattern.exec( location );	
-	while( separatorPattern.lastIndex <= location.length ){
-		hierarchyList.push( location.substring( 0, separatorPattern.lastIndex ) );
-		match = separatorPattern.exec( location );
-	}
-	this.hierarchyList = hierarchyList;
-	callback( );
+
+	var newPath = new Path( this.toString( ) );
+	newPath.appendToPath( location );
+
+	return newPath;
 };
 
-Path.prototype.getHierarchyList = function getHierarchyList( ){
-	return this.hierarchyList;
+Path.prototype.joinToRawPath = function joinToRawPath( location ){
+	/*:
+		@meta-configuration:
+			{
+				"location:required": "string"
+			}
+		@end-meta-configuration
+	*/
+
+	var newPath = new Path( this.toString( ) );
+	newPath.appendToRawPath( location );
+
+	return newPath;
 };
+
+Path.prototype.toString = function toString( ){
+	return this.locationList.join( path.sep ).replaceAll( "/", path.sep );
+};
+
+
+var path = require( "path" );
+var fs = require( "fs" );
+
+( module || { } ).exports = Path;
