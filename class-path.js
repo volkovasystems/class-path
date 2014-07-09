@@ -8,6 +8,7 @@
 			"authorName": "Richeve S. Bebedor",
 			"authorEMail": "richeve.bebedor@gmail.com",
 			"repository": "git@github.com:volkovasystems/class-path.git",
+			"testCase": "class-path-test.js",
 			"isGlobal": true
 		}
 	@end-module-configuration
@@ -22,6 +23,12 @@
 			"path": "path"
 		}
 	@end-include
+
+	@constructor-configuration:
+        {
+            "testCase": "class-path-constructor-spec.js"
+        }
+	@end-construct-configuration
 */
 var Path = function Path( location ){
 	/*:
@@ -32,9 +39,9 @@ var Path = function Path( location ){
 		@end-meta-configuration
 	*/
 
-	this.locationList = [ location ];
+    if( this instanceof Path ) this.locationList = [ location ];
 
-	return new Path( location );
+    else return new Path( location );
 };
 
 Path.prototype.verifyIfExisting = function verifyIfExisting( ){

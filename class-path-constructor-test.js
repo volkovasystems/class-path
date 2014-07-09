@@ -12,7 +12,7 @@ describe( "Path class, constructor method",
 		it( "should store location in locationList.",
 			function shouldStoreLocationInLocationList( ){
 				var path = new Path( "./sample/location" );
-				expect( path. )
+				//expect( path. )
 			} );
 
 		it( "should return instance of Path if not invoked with new.",
