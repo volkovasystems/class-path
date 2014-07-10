@@ -65,11 +65,22 @@ Path.prototype.verifyIfNotEmpty = function verifyIfNotEmpty( ){
 };
 
 Path.prototype.checkIfDirectory = function checkIfDirectory( ){
-	return fs.statSync( this.toString( ) ).isDirectory( );
+    if( this.verifyIfExisting( ) ){
+        return fs.statSync( this.toString( ) ).isDirectory( );
+
+    }else{
+        return false;
+    }
+
 };
 
 Path.prototype.checkIfFile = function checkIfFile( ){
-	return fs.statSync( this.toString( ) ).isFile( );
+    if( this.verifyIfExisting( ) ){
+        return fs.statSync( this.toString( ) ).isFile( );
+
+    }else{
+        return false;
+    }
 };
 
 Path.prototype.appendToPath = function appendToPath( location ){
