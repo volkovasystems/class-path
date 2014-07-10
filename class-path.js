@@ -26,7 +26,7 @@
 
 	@constructor-configuration:
         {
-            "testCase": "class-path-constructor-spec.js"
+            "testCase": "class-path-constructor-test.js"
         }
 	@end-construct-configuration
 */
@@ -39,9 +39,7 @@ var Path = function Path( location ){
 		@end-meta-configuration
 	*/
 
-    if( this instanceof Path ) this.locationList = [ location ];
-
-    else return new Path( location );
+    this.locationList = [ location ];
 };
 
 Path.prototype.verifyIfExisting = function verifyIfExisting( ){
@@ -51,8 +49,10 @@ Path.prototype.verifyIfExisting = function verifyIfExisting( ){
 Path.prototype.verifyIfEmpty = function verifyIfEmpty( ){
 	if( this.checkIfDirectory( ) ){
 		return fs.readdirSync( this.toString( ) ).length > 0;
+
 	}else if( this.checkIfFile( ) ){
 		return fs.readFileSync( this.toString( ), { "encoding": "utf8" } ).length > 0;
+
 	}else{
 		var error = new Error( "undetermined path" );
 		console.error( error );
