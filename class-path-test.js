@@ -1,87 +1,146 @@
-var Path = require( "./class-path.js" );
+/*:
+	@test-configuration:
+		{
+			"packageName": "class-path",
+			"fileName": "class-path-test.js",
+			"authorName": "Richeve S. Bebedor",
+			"authorEMail": "richeve.bebedor@gmail.com",
+			"repository": "git@github.com:volkovasystems/class-path.git",
+			"referenceFile": "class-path.js",
+			"referenceModule": "Path"
+		}
+	@end-test-configuration
 
-describe( "Path class",
-	function PathClass( ){
+	@test-documentation:
 
-		it( "should have verifyIfExisting method.",
-			function shouldHaveVerifyIfExistingMethod( ){
+	@end-test-documentation
+*/
+var testDesign = {
+	"title": "Class Path",
+
+	"description": "Design specification for class Path.",
+
+	"caseList": [
+		{
+			"title": "Should have verifyIfExisting method.",
+			"description": "verifyIfExisting method should be a function.",
+			"caseProcedure": function caseProcedure( ){
 
 				Path.prototype.should.have.property( "verifyIfExisting" );
-				
-				Path.prototype.verifyIfExisting.should.be.a.Function;
-			} );
 
-		it( "should have verifyIfEmpty method.",
-			function shouldHaveVerifyIfEmptyMethod( ){
+				Path.prototype.verifyIfExisting.should.be.a.Function;
+			}
+		},
+
+		{
+			"title": "Should have verifyIfEmpty method.",
+			"description": "verifyIfEmpty method should be a function.",
+			"caseProcedure": function caseProcedure( ){
 
 				Path.prototype.should.have.property( "verifyIfEmpty" );
-				
+
 				Path.prototype.verifyIfEmpty.should.be.a.Function;
-			} );
+			}
+		},
 
-		it( "should have verifyIfNotEmpty method.",
-			function shouldHaveVerifyIfEmptyMethod( ){
-				
+		{
+			"title": "Should have verifyIfNotEmpty method.",
+			"description": "verifyIfNotEmpty method should be a function.",
+			"caseProcedure": function caseProcedure( ){
+
 				Path.prototype.should.have.property( "verifyIfNotEmpty" );
-				
+
 				Path.prototype.verifyIfNotEmpty.should.be.a.Function;
-			} );
+			}
+		},
 
-		it( "should have checkIfDirectory method.",
-			function shouldHaveCheckIfDirectoryMethod( ){
-				
+		{
+			"title": "Should have checkIfDirectory method.",
+			"description": "checkIfDirectory method should be a function.",
+			"caseProcedure": function caseProcedure( ){
+
 				Path.prototype.should.have.property( "checkIfDirectory" );
-				
-				Path.prototype.checkIfDirectory.should.be.a.Function;
-			} );
 
-		it( "should have checkIfFile method.",
-			function shouldHaveCheckIfFileMethod( ){
-				
+				Path.prototype.checkIfDirectory.should.be.a.Function;
+			}
+		},
+
+		{
+			"title": "Should have checkIfFile method.",
+			"description": "checkIfFile method should be a function.",
+			"caseProcedure": function caseProcedure( ){
+
 				Path.prototype.should.have.property( "checkIfFile" );
 
 				Path.prototype.checkIfFile.should.be.a.Function;
-			} );
+			}
+		},
 
-		it( "should have appendToPath method.",
-			function shouldHaveAppendToPathMethod( ){
+		{
+			"title": "Should have appendToPath method.",
+			"description": "appendToPath method should be a function.",
+			"caseProcedure": function caseProcedure( ){
 
 				Path.prototype.should.have.property( "appendToPath" );
 
 				Path.prototype.appendToPath.should.be.a.Function;
-			} );
+			}
+		},
 
-		it( "should have appendToRawPath method.",
-			function shouldHaveAppendToRawPathMethod( ){
-				
+		{
+			"title": "Should have appendToRawPath method.",
+			"description": "appendToRawPath method should be a function.",
+			"caseProcedure": function caseProcedure( ){
+
 				Path.prototype.should.have.property( "appendToRawPath" );
 
 				Path.prototype.appendToRawPath.should.be.a.Function;
-			} );
+			}
+		},
 
-		it( "should have joinToPath method.",
-			function shouldHaveJoinToPathMethod( ){
-				
+		{
+			"title": "Should have joinToPath method.",
+			"description": "joinToPath method should be a function.",
+			"caseProcedure": function caseProcedure( ){
+
 				Path.prototype.should.have.property( "joinToPath" );
 
 				Path.prototype.joinToPath.should.be.a.Function;
-			} );
+			}
+		},
 
-		it( "should have joinToRawPath method.",
-			function shouldHaveJoinToRawPathMethod( ){
-				
+		{
+			"title": "Should have joinToRawPath method.",
+			"description": "joinToRawPath method should be a function.",
+			"caseProcedure": function caseProcedure( ){
+
 				Path.prototype.should.have.property( "joinToRawPath" );
 
 				Path.prototype.joinToRawPath.should.be.a.Function;
-			} );
+			}
+		},
 
-		/*var defaultMethodList = [ "constructor", "toString" ];
-		var PathClassPrototypePropertyList = Object.getOwnPropertyNames( Path.prototype );
-		var allMethodList = defaultMethodList.concat( testedMethodList );
+		{
+			"title": "Should currently have {currentMethodCount} methods.",
+			"caseProcedure": function caseProcedure( ){
 
-		it( "should have " + testedMethodList.length + " methods in the current class.",
-			function shouldHaveNMethodInTheCurrentClass( ){
-				expect( allMethodList.length ).toEqual( PathClassPrototypePropertyList.length );
-			} );
-*/
-	} );
+				var defaultPropertyList = [ "constructor", "toString" ];
+				var allPropertyList = Object.getOwnPropertyNames( Path.prototype );
+
+				var propertyListCount = allPropertyList.length - defaultPropertyList.length;
+
+				propertyListCount.should.be.exactly( currentMethodCount );
+
+			}
+		}
+	],
+
+	"scopeSet": {
+		"Path": require( "./class-path.js" ),
+		"currentMethodCount": 9
+	},
+
+	"dependencyList": { }
+};
+
+( module || { } ).exports = testDesign;
