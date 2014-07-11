@@ -18,12 +18,12 @@
 var testDesign = {
 	"title": "Class Path",
 
-	"description": "Design specification for class Path.",
+	"description": "Design specification for class Path",
 
 	"caseList": [
 		{
-			"title": "Should have verifyIfExisting method.",
-			"description": "verifyIfExisting method should be a function.",
+			"title": "Should have verifyIfExisting method",
+			"description": "verifyIfExisting method should be a function",
 			"caseProcedure": function caseProcedure( ){
 
 				Path.prototype.should.have.property( "verifyIfExisting" );
@@ -33,8 +33,8 @@ var testDesign = {
 		},
 
 		{
-			"title": "Should have verifyIfEmpty method.",
-			"description": "verifyIfEmpty method should be a function.",
+			"title": "Should have verifyIfEmpty method",
+			"description": "verifyIfEmpty method should be a function",
 			"caseProcedure": function caseProcedure( ){
 
 				Path.prototype.should.have.property( "verifyIfEmpty" );
@@ -44,8 +44,8 @@ var testDesign = {
 		},
 
 		{
-			"title": "Should have verifyIfNotEmpty method.",
-			"description": "verifyIfNotEmpty method should be a function.",
+			"title": "Should have verifyIfNotEmpty method",
+			"description": "verifyIfNotEmpty method should be a function",
 			"caseProcedure": function caseProcedure( ){
 
 				Path.prototype.should.have.property( "verifyIfNotEmpty" );
@@ -55,8 +55,8 @@ var testDesign = {
 		},
 
 		{
-			"title": "Should have checkIfDirectory method.",
-			"description": "checkIfDirectory method should be a function.",
+			"title": "Should have checkIfDirectory method",
+			"description": "checkIfDirectory method should be a function",
 			"caseProcedure": function caseProcedure( ){
 
 				Path.prototype.should.have.property( "checkIfDirectory" );
@@ -66,8 +66,8 @@ var testDesign = {
 		},
 
 		{
-			"title": "Should have checkIfFile method.",
-			"description": "checkIfFile method should be a function.",
+			"title": "Should have checkIfFile method",
+			"description": "checkIfFile method should be a function",
 			"caseProcedure": function caseProcedure( ){
 
 				Path.prototype.should.have.property( "checkIfFile" );
@@ -77,8 +77,8 @@ var testDesign = {
 		},
 
 		{
-			"title": "Should have appendToPath method.",
-			"description": "appendToPath method should be a function.",
+			"title": "Should have appendToPath method",
+			"description": "appendToPath method should be a function",
 			"caseProcedure": function caseProcedure( ){
 
 				Path.prototype.should.have.property( "appendToPath" );
@@ -88,8 +88,8 @@ var testDesign = {
 		},
 
 		{
-			"title": "Should have appendToRawPath method.",
-			"description": "appendToRawPath method should be a function.",
+			"title": "Should have appendToRawPath method",
+			"description": "appendToRawPath method should be a function",
 			"caseProcedure": function caseProcedure( ){
 
 				Path.prototype.should.have.property( "appendToRawPath" );
@@ -99,8 +99,8 @@ var testDesign = {
 		},
 
 		{
-			"title": "Should have joinToPath method.",
-			"description": "joinToPath method should be a function.",
+			"title": "Should have joinToPath method",
+			"description": "joinToPath method should be a function",
 			"caseProcedure": function caseProcedure( ){
 
 				Path.prototype.should.have.property( "joinToPath" );
@@ -110,8 +110,8 @@ var testDesign = {
 		},
 
 		{
-			"title": "Should have joinToRawPath method.",
-			"description": "joinToRawPath method should be a function.",
+			"title": "Should have joinToRawPath method",
+			"description": "joinToRawPath method should be a function",
 			"caseProcedure": function caseProcedure( ){
 
 				Path.prototype.should.have.property( "joinToRawPath" );
@@ -121,7 +121,8 @@ var testDesign = {
 		},
 
 		{
-			"title": "Should currently have {currentMethodCount} methods.",
+			"title": "Should currently have {currentMethodCount} methods",
+            "description": "To check if there are methods not tested",
 			"caseProcedure": function caseProcedure( ){
 
 				var defaultPropertyList = [ "constructor", "toString" ];
