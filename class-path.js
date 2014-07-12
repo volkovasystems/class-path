@@ -169,7 +169,6 @@ Path.prototype.toString = function toString( ){
 	return this.locationList.join( path.sep ).replaceAll( "/", path.sep );
 };
 
-
 var path = require( "path" );
 var fs = require( "fs" );
 
