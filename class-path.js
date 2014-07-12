@@ -29,6 +29,14 @@
             "testCase": "class-path-constructor-test.js"
         }
 	@end-construct-configuration
+
+	@constructor-documentation:
+		The location should be a string. The constructor will not check if the path is existing or valid.
+
+		When certain methods are invoked, that's the time the location will be determined.
+
+		The constructor will only put the location string inside the locationList property.
+	@end-constructor-documentation
 */
 var Path = function Path( location ){
 	/*:
@@ -39,8 +47,24 @@ var Path = function Path( location ){
 		@end-meta-configuration
 	*/
 
-    this.locationList = [ location ];
+    this.locationList.push( location );
 };
+
+/*:
+	@property-configuration:
+		{
+			"propertyNamespace": "locationList",
+			"propertyType": "List"
+		}
+	@end-property-configuration
+
+	@property-documentation:
+		This will server as the raw list of all the paths joined.
+		
+		This is done so that we can do further modifications to the path without hassle.
+	@end-property-documentation
+*/
+Path.prototype.locationList = [ ];
 
 Path.prototype.verifyIfExisting = function verifyIfExisting( ){
 	return fs.existsSync( this.toString( ) );
